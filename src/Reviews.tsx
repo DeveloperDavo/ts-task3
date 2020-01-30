@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper'
 import { useAsync } from 'react-use'
 
 import { getReviews } from './review.service'
+import { Review } from './types'
 
 export default function Reviews() {
   const { loading, error, value } = useAsync(async () => {
@@ -22,26 +23,28 @@ export default function Reviews() {
       ) : error ? (
         <div>Error: {error.message}</div>
       ) : (
-        <TableContainer component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="left">Description</TableCell>
-                <TableCell align="left">Comment</TableCell>
-                <TableCell align="left">Creation Date</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {value.map((review: any) => (
-                <TableRow key={review.UID}>
-                  <TableCell align="left">{review.markDescription}</TableCell>
-                  <TableCell align="left">{review.comment}</TableCell>
-                  <TableCell align="left">{review.creationDate}</TableCell>
+        value && (
+          <TableContainer component={Paper}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">Description</TableCell>
+                  <TableCell align="left">Comment</TableCell>
+                  <TableCell align="left">Creation Date</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {value.map((review: Review) => (
+                  <TableRow key={review.UID}>
+                    <TableCell align="left">{review.markDescription}</TableCell>
+                    <TableCell align="left">{review.comment}</TableCell>
+                    <TableCell align="left">{review.creationDate}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )
       )}
     </div>
   )
