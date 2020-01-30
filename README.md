@@ -1,44 +1,34 @@
+# Reviews - Task 3
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Run locally
 
-In the project directory, you can run:
+- `npm start`
 
-### `npm start`
+## Assumptions
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Only latest version of Chrome needs to be supported
+- Keep toggle on refresh
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Task
 
-### `npm test`
+1. Call the reviews [endpoint](https://api-qa.trustedshops.com/rest/internal/v2/shops/X6A4AACCD2C75E430381B2E1C4CLASSIC/reviews.json)
+1. Sort the results by mark in descending order
+1. Show the results in a table
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- markDescription
+- comment
+- creationDate
 
-### `npm run build`
+1. Add a background color to every second row
+1. Add a button that toggles the background color
+   1. Every second row, including row 2
+   1. Every second row, including row 1
+1. Add a button to refresh the list
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Additional requirements
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Tests are not necessary.
+- Use ~~Angular~~ React
+- Spend 3-4 hours on Tasks 1 to 4
