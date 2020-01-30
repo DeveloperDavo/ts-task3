@@ -6,10 +6,30 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import classnames from 'classnames'
 
 import { Review } from './types'
+import styles from './ReviewsTable.module.css'
 
-export function ReviewsTable({ reviews }: { reviews: Review[] }) {
+interface Props {
+  reviews: Review[]
+  toggleHighlightStartingFromRow1: boolean
+}
+
+function rowClassName(
+  toggleHighlightStartingFromRow1: boolean,
+  i: number
+): string | undefined {
+  return classnames({
+    [styles.highlight]:
+      (i + (toggleHighlightStartingFromRow1 ? 0 : 1)) % 2 === 0
+  })
+}
+
+export function ReviewsTable({
+  reviews,
+  toggleHighlightStartingFromRow1
+}: Props) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -21,8 +41,11 @@ export function ReviewsTable({ reviews }: { reviews: Review[] }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {reviews.map((review: Review) => (
-            <TableRow key={review.UID}>
+          {reviews.map((review: Review, i) => (
+            <TableRow
+              className={rowClassName(toggleHighlightStartingFromRow1, i)}
+              key={review.UID}
+            >
               <TableCell align="left">{review.markDescription}</TableCell>
               <TableCell align="left">{review.comment}</TableCell>
               <TableCell align="left">{review.creationDate}</TableCell>
