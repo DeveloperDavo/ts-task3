@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import { useAsyncRetry } from 'react-use'
 
 import { getReviews } from './review.service'
-import { ReviewsTable } from './ReviewsTable'
+import ReviewsTable from './ReviewsTable'
 import { Review } from './types'
 
 export default function Reviews() {

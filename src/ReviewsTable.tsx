@@ -23,7 +23,7 @@ function rowClassName(
     return styles.highlight
 }
 
-export function ReviewsTable({
+export default function ReviewsTable({
   reviews,
   toggleHighlightStartingFromRow1
 }: Props) {
