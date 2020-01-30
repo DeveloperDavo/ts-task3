@@ -8,10 +8,7 @@ import ReviewsTable from './ReviewsTable'
 import { Review } from './types'
 
 export default function Reviews() {
-  const [
-    toggleHighlightStartingFromRow1,
-    setToggleHighlightStartingFromRow1
-  ] = useState(false)
+  const [toggleFirst, setToggleFirst] = useState(false)
   const [reviews, setReviews] = useState<Review[] | null>(null)
 
   const { loading, error, retry } = useAsyncRetry(async () => {
@@ -27,12 +24,10 @@ export default function Reviews() {
       {loading && <> Loading...</>}
       <div>
         <Switch
-          checked={toggleHighlightStartingFromRow1}
-          onChange={() =>
-            setToggleHighlightStartingFromRow1(!toggleHighlightStartingFromRow1)
-          }
+          checked={toggleFirst}
+          onChange={() => setToggleFirst(!toggleFirst)}
           color="default"
-          value={toggleHighlightStartingFromRow1}
+          value={toggleFirst}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
       </div>
@@ -41,10 +36,7 @@ export default function Reviews() {
       ) : (
         reviews && (
           <>
-            <ReviewsTable
-              reviews={reviews}
-              toggleHighlightStartingFromRow1={toggleHighlightStartingFromRow1}
-            />
+            <ReviewsTable reviews={reviews} toggleFirst={toggleFirst} />
           </>
         )
       )}

@@ -12,21 +12,14 @@ import styles from './ReviewsTable.module.css'
 
 interface Props {
   reviews: Review[]
-  toggleHighlightStartingFromRow1: boolean
+  toggleFirst: boolean
 }
 
-function rowClassName(
-  toggleHighlightStartingFromRow1: boolean,
-  i: number
-): string | undefined {
-  if ((i + (toggleHighlightStartingFromRow1 ? 0 : 1)) % 2 === 0)
-    return styles.highlight
+function rowClassName(toggleFirst: boolean, i: number): string | undefined {
+  if ((i + (toggleFirst ? 0 : 1)) % 2 === 0) return styles.highlight
 }
 
-export default function ReviewsTable({
-  reviews,
-  toggleHighlightStartingFromRow1
-}: Props) {
+export default function ReviewsTable({ reviews, toggleFirst }: Props) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -39,10 +32,7 @@ export default function ReviewsTable({
         </TableHead>
         <TableBody>
           {reviews.map((review: Review, i) => (
-            <TableRow
-              className={rowClassName(toggleHighlightStartingFromRow1, i)}
-              key={review.UID}
-            >
+            <TableRow className={rowClassName(toggleFirst, i)} key={review.UID}>
               <TableCell align="left">{review.markDescription}</TableCell>
               <TableCell align="left">{review.comment}</TableCell>
               <TableCell align="left">{review.creationDate}</TableCell>
