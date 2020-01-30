@@ -1,28 +1,36 @@
 import React, { useState } from 'react'
-import { useAsync } from 'react-use'
+import Button from '@material-ui/core/Button'
+import { useAsyncRetry } from 'react-use'
 
 import { getReviews } from './review.service'
 import { ReviewsTable } from './ReviewsTable'
+import { Review } from './types'
 
 export default function Reviews() {
   const [toggleHighlightStartingFromRow1] = useState(false)
+  const [reviews, setReviews] = useState<Review[] | null>(null)
 
-  const { loading, error, value } = useAsync(async () => {
-    return await getReviews()
+  const { loading, error, retry } = useAsyncRetry(async () => {
+    const reviews = await getReviews()
+    setReviews(reviews)
   }, [])
 
   return (
     <section>
-      {loading ? (
-        <>Loading...</>
-      ) : error ? (
+      <Button onClick={retry} variant="contained">
+        Refresh
+      </Button>
+      {loading && <> Loading...</>}
+      {error ? (
         <div>Error: {error.message}</div>
       ) : (
-        value && (
-          <ReviewsTable
-            reviews={value}
-            toggleHighlightStartingFromRow1={toggleHighlightStartingFromRow1}
-          />
+        reviews && (
+          <>
+            <ReviewsTable
+              reviews={reviews}
+              toggleHighlightStartingFromRow1={toggleHighlightStartingFromRow1}
+            />
+          </>
         )
       )}
     </section>
