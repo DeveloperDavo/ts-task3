@@ -24,7 +24,7 @@ export default function ReviewsTable({ reviews, toggleFirst }: Props) {
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow className={styles.rowHeader}>
             <TableCell align="left">Description</TableCell>
             <TableCell align="left">Comment</TableCell>
             <TableCell align="left">Creation Date</TableCell>

@@ -1,3 +1,7 @@
 .highlight {
   background-color: var(--yellow);
 }
+
+.rowHeader {
+  background-color: var(--blue);
+}
