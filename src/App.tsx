@@ -1,7 +1,8 @@
 import React from 'react'
+import Reviews from './Reviews'
 
 const App: React.FC = () => {
-  return <p>nothing to see here</p>
+  return <Reviews />
 }
 
 export default App
