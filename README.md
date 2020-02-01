@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Only latest version of Chrome needs to be supported
 - Keep toggle on refresh
-- `mark` never has more than 2 decimal places
+- `mark` can be parsed as a float
 
 ## Task
 
