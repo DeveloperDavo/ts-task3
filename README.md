@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Only latest version of Chrome needs to be supported
 - Keep toggle on refresh
 - `mark` can be parsed as a float
+- Creation date doesn't need to be formatted
 
 ## Task
 
